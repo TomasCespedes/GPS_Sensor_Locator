@@ -2,8 +2,10 @@ package com.example.ehar.SensorExample;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -28,6 +30,8 @@ public class MainActivity
     private TextView starting_longitude = null;
     private TextView ending_latitude = null;
     private TextView ending_longitude = null;
+    private TextView current_latitude = null;
+    private TextView current_longitude = null;
 
     // Buttons
     private Button start, stop, drop_pin, reset;
@@ -39,6 +43,12 @@ public class MainActivity
     private Observable accel;
     private LocationHandler location;
     private LocationManager lm;
+
+    //Sounds
+    MediaPlayer mpPin;
+    MediaPlayer mpStop;
+    MediaPlayer mpStart;
+    MediaPlayer mpReset;
 
     final public static int REQUEST_ASK_FINE_LOCATION = 999;
 
@@ -54,12 +64,32 @@ public class MainActivity
         starting_longitude = (TextView) findViewById(R.id.starting_longitude);
         ending_latitude = (TextView) findViewById(R.id.ending_latitude);
         ending_longitude = (TextView) findViewById(R.id.ending_longitude);
+        current_latitude = (TextView) findViewById(R.id.current_latitude);
+        current_longitude = (TextView) findViewById(R.id.current_longitude);
 
         // Find buttons
         start = (Button) findViewById(R.id.start_button);
         stop = (Button) findViewById(R.id.stop_button);
         drop_pin = (Button) findViewById(R.id.pin_button);
         reset = (Button) findViewById(R.id.reset_button);
+
+        //Initialize button colors
+        this.start.setBackgroundColor(Color.GREEN);
+        this.stop.setBackgroundColor(Color.GRAY);
+        this.drop_pin.setBackgroundColor(Color.CYAN);
+        this.reset.setBackgroundColor(Color.YELLOW);
+
+        //Properly enable buttons
+        this.start.setEnabled(true);
+        this.stop.setEnabled(false);
+        this.drop_pin.setEnabled(true);
+        this.reset.setEnabled(true);
+
+        //Initalize MediaPlayers for our sounds
+        mpPin = MediaPlayer.create(this.getApplicationContext(), R.raw.droppin);
+        mpStop = MediaPlayer.create(this.getApplicationContext(), R.raw.stoppin);
+        mpStart = MediaPlayer.create(this.getApplicationContext(), R.raw.start);
+        mpReset = MediaPlayer.create(this.getApplicationContext(), R.raw.resetpin);
 
         // Create new AccelerometerHandler
         this.accel = new AccelerometerHandler(500, this);
@@ -76,10 +106,13 @@ public class MainActivity
                 startLocation = getLastKnownLocation();
                 double start_lat = startLocation.getLatitude();
                 double start_long = startLocation.getLongitude();
-
                 starting_latitude.setText(Double.toString(start_lat));
                 starting_longitude.setText(Double.toString(start_long));
-
+                start.setEnabled(false);
+                start.setBackgroundColor(Color.GRAY);
+                stop.setEnabled(true);
+                stop.setBackgroundColor(Color.RED);
+                mpStart.start();
             }
         });
 
@@ -90,9 +123,44 @@ public class MainActivity
                 endLocation = getLastKnownLocation();
                 double end_lat = endLocation.getLatitude();
                 double end_long = endLocation.getLongitude();
-
                 ending_latitude.setText(Double.toString(end_lat));
                 ending_longitude.setText(Double.toString(end_long));
+                stop.setEnabled(false);
+                stop.setBackgroundColor(Color.GRAY);
+                start.setEnabled(true);
+                start.setBackgroundColor(Color.GREEN);
+                mpStop.start();
+            }
+        });
+
+        // Drop pin button onClick
+        drop_pin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //need to add pin to scrollview here.
+                //put current_latitude.getText() into scrollview;
+                //put current_longitude.getText() into scrollview;
+                mpPin.start();
+            }
+        });
+
+
+        // Reset button onClick
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //need to reset the scrollview here.
+                starting_latitude.setText("0");
+                starting_longitude.setText("0");
+                ending_latitude.setText("0");
+                ending_longitude.setText("0");
+                accel_x_view.setText("0");
+                accel_y_view.setText("0");
+                stop.setEnabled(false);
+                start.setEnabled(true);
+                stop.setBackgroundColor(Color.GRAY);
+                start.setBackgroundColor(Color.GREEN);
+                mpReset.start();
             }
         });
     }
@@ -111,8 +179,12 @@ public class MainActivity
             double lat = l.getLatitude();
             double lon = l.getLongitude();
 
+            /*
             Toast.makeText(MainActivity.this, "Lat: " + lat +
                     " Lon: " + lon, Toast.LENGTH_LONG).show();
+            */
+            current_latitude.setText(Double.toString(lat));
+            current_longitude.setText(Double.toString(lon));
         }
     }
 
