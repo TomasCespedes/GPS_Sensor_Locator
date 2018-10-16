@@ -74,104 +74,49 @@
                 android:id="@+id/ending_coordinates"
                 android:text="(0, 0)"
                 android:textSize="30sp"
+                android:paddingBottom="10dp"
 
                 />
 
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ScrollView
-                android:layout_width="match_parent"
+            android:background="#3d455b"
+            android:paddingBottom="150dp"
+            >
+
+            <HorizontalScrollView
+                android:id="@+id/hscrll1"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/scroll"
-                android:fillViewport="true"
                 >
 
-                <GridLayout
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:id="@+id/RelativeLayout1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/table"
-                    >
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_marginTop="150dp"
+                    <TableLayout
+                        android:id="@+id/table_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet congue felis. Mauris tristique sagittis felis malesuada efficitur. Nulla facilisi. Morbi in leo suscipit, rhoncus neque et, pellentesque diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam bibendum sagittis arcu, vitae faucibus risus. Morbi tristique quam augue, ac pretium odio interdum sed. Nulla facilisi. Donec sollicitudin egestas metus, pretium lacinia felis rutrum nec. In vitae lorem nunc.
+                        android:layout_centerHorizontal="true">
+                    </TableLayout>
 
-Nam eget sagittis nisi. Suspendisse mattis diam dui, vel fermentum metus condimentum et. Curabitur accumsan, risus et blandit ornare, enim quam mattis nunc, eget maximus velit leo sit amet magna. Nunc laoreet condimentum elit, non volutpat nibh pretium sit amet. Donec dictum congue ligula, vel vehicula sem euismod at. Suspendisse et felis at erat porta ultricies. Curabitur quam nisl, tempor et fringilla sed, auctor vitae orci. Cras vestibulum sapien sit amet consectetur dapibus. In bibendum varius diam, ac suscipit augue lobortis vitae. Nunc volutpat arcu quis sagittis cursus. Praesent euismod, augue at aliquet iaculis, mauris turpis fringilla tellus, ut commodo sem risus sed metus. In cursus arcu sed libero ullamcorper porttitor.Etiam congue vel augue vitae mollis. Nulla sed libero vel ex hendrerit lacinia sit amet in arcu. Aenean eu ipsum ante. Aenean malesuada euismod ligula at imperdiet. Mauris dignissim aliquet nibh. Aliquam felis orci, maximus et blandit ac, rutrum vitae tellus. Quisque feugiat commodo purus, at imperdiet orci interdum sed. Aliquam consequat diam quis tellus aliquet fringilla. Suspendisse faucibus ipsum aliquam orci elementum sollicitudin et a diam.
+                </RelativeLayout>
 
-Nulla aliquet malesuada massa, nec commodo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet congue felis. Mauris tristique sagittis felis malesuada efficitur. Nulla facilisi. Morbi in leo suscipit, rhoncus neque et, pellentesque diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam bibendum sagittis arcu, vitae faucibus risus. Morbi tristique quam augue, ac pretium odio interdum sed. Nulla facilisi. Donec sollicitudin egestas metus, pretium lacinia felis rutrum nec. In vitae lorem nunc.
+            </HorizontalScrollView>
 
-Nam eget sagittis nisi. Suspendisse mattis diam dui, vel fermentum metus condimentum et. Curabitur accumsan, risus et blandit ornare, enim quam mattis nunc, eget maximus velit leo sit amet magna. Nunc laoreet condimentum elit, non volutpat nibh pretium sit amet. Donec dictum congue ligula, vel vehicula sem euismod at. Suspendisse et felis at erat porta ultricies. Curabitur quam nisl, tempor et fringilla sed, auctor vitae orci. Cras vestibulum sapien sit amet consectetur dapibus. In bibendum varius diam, ac suscipit augue lobortis vitae. Nunc volutpat arcu quis sagittis cursus. Praesent euismod, augue at aliquet iaculis, mauris turpis fringilla tellus, ut commodo sem risus sed metus. In cursus arcu sed libero ullamcorper porttitor.Etiam congue vel augue vitae mollis. Nulla sed libero vel ex hendrerit lacinia sit amet in arcu. Aenean eu ipsum ante. Aenean malesuada euismod ligula at imperdiet. Mauris dignissim aliquet nibh. Aliquam felis orci, maximus et blandit ac, rutrum vitae tellus. Quisque feugiat commodo purus, at imperdiet orci interdum sed. Aliquam consequat diam quis tellus aliquet fringilla. Suspendisse faucibus ipsum aliquam orci elementum sollicitudin et a diam.
+        </ScrollView>
 
-Nulla aliquet malesuada massa, nec commodo ligula vestibulum at. Ut eu eleifend ante. Donec euismod purus ante, eget mollis lorem ultrices ut. Aenean pulvinar, ex fermentum varius varius, erat nibh pellentesque metus, sit amet tincidunt ante tellus eu libero. Mauris eros lectus, sodales at tristique sed, tincidunt sit amet sem. Suspendisse potenti. Nullam commodo metus augue, eget interdum orci consequat sed. Maecenas interdum elit hendrerit, vulputate nisi ac, lobortis dui. Phasellus vel ligula laoreet, iaculis ex id, malesuada nibh. Aenean interdum faucibus imperdiet.
-
-Sed aliquet ante nec venenatis condimentum. Vivamusligula vestibulum at. Ut eu eleifend ante. Donec euismod purus ante, eget mollis lorem ultrices ut. Aenean pulvinar, ex fermentum varius varius, erat nibh pellentesque metus, sit amet tincidunt ante tellus eu libero. Mauris eros lectus, sodales at tristique sed, tincidunt sit amet sem. Suspendisse potenti. Nullam commodo metus augue, eget interdum orci consequat sed. Maecenas interdum elit hendrerit, vulputate nisi ac, lobortis dui. Phasellus vel ligula laoreet, iaculis ex id, malesuada nibh. Aenean interdum faucibus imperdiet.
-
-Sed aliquet ante nec venenatis condimentum. Vivamus a nulla nulla. Nullam eu velit ultrices, luctus quam eu, tincidunt sapien. Donec pellentesque gravida est sed dictum. Sed luctus vel ante vel fermentum. Nulla hendrerit quam vel gravida elementum. Nullam varius lectus mi, eu condimentum urna viverra sed. Quisque nec enim ullamcorper, venenatis quam sed, aliquam augue. Duis condimentum arcu orci, et commodo tortor posuere non. Nunc gravida leo ac augue euismod, quis sodales eros elementum. In molestie consectetur sem, eu elementum dolor vestibulum feugiat. Curabitur nec scelerisque tortor. Morbi ac dui nulla. In hac habitasse platea dictumst. Donec eu quam eget neque mattis elementum."
-                        android:layout_column="0"
-                        android:textSize="20sp"
-                        android:layout_row="1"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:text="Point"
-                        android:layout_column="0"
-                        android:layout_row="0"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:text="Longitude"
-                        android:layout_column="1"
-                        android:layout_row="0"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:text="Latitude"
-                        android:layout_column="2"
-                        android:layout_row="0"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:text="Distance"
-                        android:layout_column="3"
-                        android:layout_row="0"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:text="Speed"
-                        android:layout_column="4"
-                        android:layout_row="0"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:text="Heading"
-                        android:layout_column="5"
-                        android:layout_row="0"/>
-
-                </GridLayout>
-
-            </ScrollView>
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -280,6 +225,7 @@ Sed aliquet ante nec venenatis condimentum. Vivamus a nulla nulla. Nullam eu vel
 
 
     </LinearLayout>
+
 
 
 </FrameLayout>
