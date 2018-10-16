@@ -58,7 +58,7 @@ public class MainActivity
     MediaPlayer mpReset;
 
     // Decimal format
-    DecimalFormat df = new DecimalFormat("0.######");
+    DecimalFormat df = new DecimalFormat("0.####");
 
     final public static int REQUEST_ASK_FINE_LOCATION = 999;
 
@@ -82,7 +82,7 @@ public class MainActivity
         this.stop.setEnabled(false);
         this.drop_pin.setEnabled(false);
         this.reset.setEnabled(true);
-        
+
         // Create new AccelerometerHandler
         this.accel = new AccelerometerHandler(500, this);
         this.accel.addObserver(this);
@@ -105,8 +105,8 @@ public class MainActivity
                 prevLocation = startLocation;
 
                 // Set starting coordinates texts
-                starting_coordinates.setText("(" + Double.toString(start_lat) + ", " +
-                                            Double.toString(start_long) + ")");
+                starting_coordinates.setText(("(" + df.format(start_lat) + ", " +
+                                            df.format(start_long) + ")"));
 
                 // Disable Buttons and change
                 // colors accordingly
@@ -133,8 +133,8 @@ public class MainActivity
                 double end_long = endLocation.getLongitude();
 
                 // Set the ending coordinates text
-                ending_coordinates.setText("(" + Double.toString(end_lat) + ", " +
-                                        Double.toString(end_long) + ")");
+                ending_coordinates.setText(("(" + df.format(end_lat) + ", " +
+                                        df.format(end_long) + ")"));
 
                 // Change button enabled and
                 // colors accordingly
@@ -213,8 +213,8 @@ public class MainActivity
             double lon = l.getLongitude();
 
             // Update current coordinates on the fly
-            current_coordinates.setText("(" + Double.toString(lat) + ", " +
-                                        Double.toString(lon) + ")");
+            current_coordinates.setText(("(" + df.format(lat) + ", " +
+                                        df.format(lon) + ")"));
         }
     }
 
@@ -349,6 +349,8 @@ public class MainActivity
 
         // Save Previous location
         prevLocation = currentLocation;
+
+        Log.d("String", Integer.toString(pincount));
 
     }
 
