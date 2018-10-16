@@ -339,7 +339,7 @@ public class MainActivity
 
         // Velocity
         TextView t5v = new TextView(this);
-        t5v.setText("1");
+        t5v.setText(df.format(prevLocation.bearingTo(currentLocation)));
         t5v.setTextColor(Color.WHITE);
         t5v.setGravity(Gravity.CENTER);
         tbrow.addView(t5v);
