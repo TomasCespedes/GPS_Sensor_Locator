@@ -1,6 +1,6 @@
 package com.example.ehar.SensorExample;
 
-public class Distance {
+public class Utility {
     // calculates distance on a sphere
     // d = arccos(sin(lat1) sin(lat2) + cos(lat1) cos(lat2) cos(lon2 − lon1) ) R
     public static double greatCircleDistance(double lat1, double long1, double lat2, double long2){

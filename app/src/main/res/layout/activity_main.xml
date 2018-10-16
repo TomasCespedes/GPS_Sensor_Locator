@@ -56,8 +56,6 @@
 
         </LinearLayout>
 
-
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,12 +80,75 @@
 
         </LinearLayout>
 
-
-
-
-
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/table">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Point"
+                    android:layout_column="0"
+                    android:layout_row="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Longitude"
+                    android:layout_column="1"
+                    android:layout_row="0"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Latitude"
+                    android:layout_column="2"
+                    android:layout_row="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Distance"
+                    android:layout_column="3"
+                    android:layout_row="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Speed"
+                    android:layout_column="4"
+                    android:layout_row="0"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:text="Heading"
+                    android:layout_column="5"
+                    android:layout_row="0"/>
+
+            </GridLayout>
+
+        </ScrollView>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
