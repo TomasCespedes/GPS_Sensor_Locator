@@ -19,109 +19,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Starting Latitude: "
-                android:textSize="35sp"
+                android:text="Current Coordinates: "
+                android:textSize="30sp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/starting_latitude"
-                android:text="@string/_0"
-                android:textSize="35sp"
-                />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Starting Longitude: "
-                android:textSize="35sp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/starting_longitude"
-                android:text="@string/_0"
-                android:textSize="35sp"
-                />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ending Latitude: "
-                android:textSize="35sp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ending_latitude"
-                android:text="@string/_0"
-                android:textSize="35sp"
-
-                />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ending Longitude: "
-                android:textSize="35sp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ending_longitude"
-                android:text="@string/_0"
-                android:textSize="35sp"
-                />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Current Latitude: "
-                android:textSize="35sp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/current_latitude"
-                android:text=""
-                android:textSize="35sp"
+                android:id="@+id/current_coordinates"
+                android:text="(0, 0)"
+                android:textSize="30sp"
                 />
 
         </LinearLayout>
@@ -134,19 +41,49 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Longitude: "
-                android:textSize="35sp"
+                android:text="Starting Coordinates: "
+                android:textSize="30sp"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/current_longitude"
-                android:text="0"
-                android:textSize="35sp"
+                android:id="@+id/starting_coordinates"
+                android:text="(0, 0)"
+                android:textSize="30sp"
                 />
 
+
         </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ending Coordinates: "
+                android:textSize="30sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ending_coordinates"
+                android:text="(0, 0)"
+                android:textSize="30sp"
+
+                />
+
+
+        </LinearLayout>
+
+
+
 
 
     </LinearLayout>
