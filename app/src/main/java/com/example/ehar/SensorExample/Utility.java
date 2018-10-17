@@ -23,11 +23,28 @@ public class Utility {
         return d;
     }
 
-    public static double compasHeading(Location prev, Location curr) {
+    // Borrowed the following function from the below source.
+    // https://stackoverflow.com/questions/9457988/bearing-from-one-coordinate-to-another
+    // Returns the direction traveled from the two locations.
+    public static String compasHeading(Location prev, Location curr) {
         double prevLat = Math.toRadians(prev.getLatitude());
         double prevLon = Math.toRadians(prev.getLongitude());
         double currLat = Math.toRadians(curr.getLatitude());
         double currLon = Math.toRadians(curr.getLongitude());
-        return 0.0;
+        double diffPts = Math.toRadians(prevLon - currLon);
+
+        double y= Math.sin(diffPts)*Math.cos(currLat);
+        double x=Math.cos(prevLat)*Math.sin(currLat)-Math.sin(prevLat)*
+                Math.cos(currLat)*Math.cos(diffPts);
+
+        double degrees = (Math.toDegrees(Math.atan2(y, x))+360)%360;
+
+        String directions[] = {"N","NNE", "NE","ENE","E", "ESE","SE","SSE", "S","SSW",
+                "SW","WSW", "W","WNW", "NW","NNW", "N"};
+        double direction = Math.round(degrees / 22.5);
+        if (direction < 0) {
+            direction = direction + 16;
+        }
+        return directions[(int) direction];
     }
 }
