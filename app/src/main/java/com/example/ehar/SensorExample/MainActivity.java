@@ -52,6 +52,12 @@ public class MainActivity
     // Counter for pin clicks
     private int pincount = 0;
 
+    // Times for total velocity
+    private long startTime;
+    private long totalTime;
+    private long endTime;
+
+
     //Sounds
     MediaPlayer mpPin;
     MediaPlayer mpStop;
@@ -89,6 +95,10 @@ public class MainActivity
                 starting_coordinates.setText(("(" + df.format(start_lat) + ", " +
                                             df.format(start_long) + ")"));
 
+                // Save the time the timer was set
+                startTime = System.currentTimeMillis();
+                totalTime = 0;
+
                 // Disable Buttons and change
                 // colors accordingly
                 start.setEnabled(false);
@@ -123,6 +133,9 @@ public class MainActivity
                 stop.setBackgroundColor(Color.GRAY);
                 drop_pin.setEnabled(false);
                 drop_pin.setBackgroundColor(Color.GRAY);
+
+                // Save the end time
+                endTime = System.currentTimeMillis();
 
                 // Sound for stop button
                 mpStop.start();
