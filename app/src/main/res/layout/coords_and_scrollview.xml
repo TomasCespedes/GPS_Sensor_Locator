@@ -80,6 +80,29 @@
 
         </LinearLayout>
 
+        <!-- Total Velocity -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Velocity: "
+                android:textColor="#FFFFFF"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/total_velcoity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:text="0 m/s"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
         <!-- Scroll View with a Relative Layout and Table Layout  -->
         <ScrollView
             android:id="@+id/scrollView1"

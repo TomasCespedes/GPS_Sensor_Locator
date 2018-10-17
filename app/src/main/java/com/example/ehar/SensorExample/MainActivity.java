@@ -35,6 +35,7 @@ public class MainActivity
     private TextView current_coordinates = null;
     private TextView current_velocity = null;
     private TextView total_distance = null;
+    private TextView total_velocity = null;
 
     // Buttons
     private Button start, stop, drop_pin, reset;
@@ -160,7 +161,7 @@ public class MainActivity
                 addTableHeaders();
                 pincount = 0;
                 totalDistance = 0;
-                
+
                 // Reset text of starting/ending coordinates
                 starting_coordinates.setText("(0, 0)");
                 ending_coordinates.setText("(0, 0)");
@@ -262,6 +263,7 @@ public class MainActivity
         current_coordinates = (TextView) findViewById(R.id.current_coordinates);
         current_velocity = (TextView) findViewById(R.id.current_velocity);
         total_distance = (TextView) findViewById(R.id.total_distance);
+        total_velocity = (TextView) findViewById(R.id.total_velcoity);
 
         // Find buttons
         start = (Button) findViewById(R.id.start_button);
