@@ -136,7 +136,7 @@ public class MainActivity
                 // Set the overall velocity
                 double totalTime = (endTime - startTime) / 1000.0;
                 double avgVel = totalDistance / totalTime;
-                total_velocity.setText(df.format(avgVel));
+                total_velocity.setText(df.format(avgVel) + " m/s");
 
                 // Change button enabled and
                 // colors accordingly
@@ -195,6 +195,7 @@ public class MainActivity
                 starting_coordinates.setText("(0, 0)");
                 ending_coordinates.setText("(0, 0)");
                 total_distance.setText("0 meters");
+                total_velocity.setText("0 m/s");
 
                 // Reset all the buttons
                 drop_pin.setEnabled(false);
