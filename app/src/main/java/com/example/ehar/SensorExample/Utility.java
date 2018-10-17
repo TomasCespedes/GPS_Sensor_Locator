@@ -29,7 +29,7 @@ public class Utility {
     // Borrowed the following function from the below source.
     // https://stackoverflow.com/questions/9457988/bearing-from-one-coordinate-to-another
     // Returns the direction traveled from the two locations.
-    public static String compasHeading(Location prev, Location curr) {
+    public static String compassHeading(Location prev, Location curr) {
         double prevLat = Math.toRadians(prev.getLatitude());
         double prevLon = Math.toRadians(prev.getLongitude());
         double currLat = Math.toRadians(curr.getLatitude());

@@ -33,6 +33,7 @@ public class MainActivity
     private TextView starting_coordinates = null;
     private TextView ending_coordinates = null;
     private TextView current_coordinates = null;
+    private TextView current_velocity = null;
 
     // Buttons
     private Button start, stop, drop_pin, reset;
@@ -191,6 +192,8 @@ public class MainActivity
             Location l = (Location) o;
             double lat = l.getLatitude();
             double lon = l.getLongitude();
+            // Constantly update velocity
+            instantaneousVelocity();
 
             // Update current coordinates on the fly
             current_coordinates.setText(("(" + df.format(lat) + ", " +
@@ -252,7 +255,7 @@ public class MainActivity
         starting_coordinates = (TextView) findViewById(R.id.starting_coordinates);
         ending_coordinates = (TextView) findViewById(R.id.ending_coordinates);
         current_coordinates = (TextView) findViewById(R.id.current_coordinates);
-
+        current_velocity = (TextView) findViewById(R.id.current_velocity);
 
         // Find buttons
         start = (Button) findViewById(R.id.start_button);
@@ -396,8 +399,8 @@ public class MainActivity
     }
 
     public void instantaneousVelocity() {
-        Velocity v = new Velocity(getLastKnownLocation(), 2);
-        Utility.delayedRunOnUiThread(this, 2000, v);
+        Velocity v = new Velocity(getLastKnownLocation(), 10);
+        Utility.delayedRunOnUiThread(this, 10000, v);
     }
 
     private class Velocity implements Runnable {
@@ -418,8 +421,9 @@ public class MainActivity
                     curr.getLongitude());
             // Divide the distance travelled by
             // the time period it runs over
-            double speed = distanceTravelled / this.time;
+            double speed = distanceTravelled / this.time * 1000;
             String forTextView = df.format(speed) + " m/s";
+            current_velocity.setText(forTextView);
         }
     }
 
