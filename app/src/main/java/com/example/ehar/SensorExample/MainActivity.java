@@ -348,6 +348,13 @@ public class MainActivity
         t5v.setGravity(Gravity.CENTER);
         tbrow.addView(t5v);
 
+        // Compass Direction
+        TextView t6v = new TextView(this);
+        t6v.setText(Utility.compassHeading(prevLocation, currentLocation));
+        t6v.setTextColor(Color.WHITE);
+        t6v.setGravity(Gravity.CENTER);
+        tbrow.addView(t6v);
+
         // add row view to the stack
         stk.addView(tbrow);
 
@@ -363,39 +370,47 @@ public class MainActivity
         stk = (TableLayout) findViewById(R.id.table_main);
 
         // Pin Number
-        TableRow tbrow0 = new TableRow(this);
+        TableRow tbrow = new TableRow(this);
         TextView tv0 = new TextView(this);
         tv0.setText(" Pin Number ");
         tv0.setTextColor(Color.WHITE);
-        tbrow0.addView(tv0);
+        tbrow.addView(tv0);
 
         // Latitude
         TextView tv1 = new TextView(this);
         tv1.setPadding(20,9,20,0);
         tv1.setText(" Latitude ");
         tv1.setTextColor(Color.WHITE);
-        tbrow0.addView(tv1);
+        tbrow.addView(tv1);
 
         // Longitude
         TextView tv2 = new TextView(this);
         tv2.setPadding(20,9,20,0);
         tv2.setText(" Longitude ");
         tv2.setTextColor(Color.WHITE);
-        tbrow0.addView(tv2);
+        tbrow.addView(tv2);
 
         // Distance
         TextView tv3 = new TextView(this);
         tv3.setPadding(20, 0, 20, 0);
         tv3.setText(" Distance From Previous");
         tv3.setTextColor(Color.WHITE);
-        tbrow0.addView(tv3);
+        tbrow.addView(tv3);
 
         // Velocity
         TextView tv4 = new TextView(this);
         tv4.setText(" Velocity ");
         tv4.setTextColor(Color.WHITE);
-        tbrow0.addView(tv4);
-        stk.addView(tbrow0);
+        tbrow.addView(tv4);
+
+        // Compass Direction
+        TextView tv5 = new TextView(this);
+        tv5.setPadding(20,0,0,0);
+        tv5.setText(" Direction From Previous ");
+        tv5.setTextColor(Color.WHITE);
+        tbrow.addView(tv5);
+
+        stk.addView(tbrow);
     }
 
     public void instantaneousVelocity() {
