@@ -139,6 +139,15 @@ public class MainActivity
 
                 // Save the end time
                 endTime = System.currentTimeMillis();
+
+                double distance_temp = (1000* Utility.greatCircleDistance(
+                        prevLocation.getLatitude(),
+                        prevLocation.getLongitude(),
+                        endLocation.getLatitude(),
+                        endLocation.getLongitude()));
+
+                totalDistance += distance_temp;
+
                 total_distance.setText(df.format(totalDistance) + " meters");
 
                 // Sound for stop button
