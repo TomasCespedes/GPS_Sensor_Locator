@@ -71,26 +71,6 @@ public class MainActivity
         init();
         addTableHeaders();
 
-        //Initialize button colors
-        this.start.setBackgroundColor(Color.GREEN);
-        this.stop.setBackgroundColor(Color.GRAY);
-        this.drop_pin.setBackgroundColor(Color.GRAY);
-        this.reset.setBackgroundColor(Color.YELLOW);
-
-        //Properly enable buttons
-        this.start.setEnabled(true);
-        this.stop.setEnabled(false);
-        this.drop_pin.setEnabled(false);
-        this.reset.setEnabled(true);
-
-        // Create new AccelerometerHandler
-        this.accel = new AccelerometerHandler(500, this);
-        this.accel.addObserver(this);
-
-        // Create new LocationHandler
-        this.location = new LocationHandler(this);
-        this.location.addObserver(this);
-
         // Start button onClick
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -263,11 +243,6 @@ public class MainActivity
     }
 
 
-    /**
-     * Borrowed from https://stackoverflow.com/questions/18207470
-     * /adding-table-rows-dynamically-in-android/22682248#22682248
-     */
-
     // Initialize all views to clean up code
     public void init() {
 
@@ -291,8 +266,34 @@ public class MainActivity
         mpStart = MediaPlayer.create(this.getApplicationContext(), R.raw.start);
         mpReset = MediaPlayer.create(this.getApplicationContext(), R.raw.resetpin);
 
-        }
+        //Initialize button colors
+        start.setBackgroundColor(Color.GREEN);
+        stop.setBackgroundColor(Color.GRAY);
+        drop_pin.setBackgroundColor(Color.GRAY);
+        reset.setBackgroundColor(Color.YELLOW);
 
+        //Properly enable buttons
+        start.setEnabled(true);
+        stop.setEnabled(false);
+        drop_pin.setEnabled(false);
+        reset.setEnabled(true);
+
+        // Create new AccelerometerHandler
+        accel = new AccelerometerHandler(500, this);
+        accel.addObserver(this);
+
+        // Create new LocationHandler
+        location = new LocationHandler(this);
+        location.addObserver(this);
+
+
+    }
+
+
+    /**
+     * Borrowed from https://stackoverflow.com/questions/18207470
+     * /adding-table-rows-dynamically-in-android/22682248#22682248
+     */
     // Add new pin to the table
     public void addNewPin() {
 
@@ -306,7 +307,7 @@ public class MainActivity
         // Pin Number
         TableRow tbrow = new TableRow(this);
         TextView t1v = new TextView(this);
-        t1v.setText("" + pincount);
+        t1v.setText(("" + pincount));
         t1v.setTextColor(Color.WHITE);
         t1v.setGravity(Gravity.CENTER);
         tbrow.addView(t1v);
@@ -349,8 +350,6 @@ public class MainActivity
 
         // Save Previous location
         prevLocation = currentLocation;
-
-        Log.d("String", Integer.toString(pincount));
 
     }
 

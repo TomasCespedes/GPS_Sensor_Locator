@@ -11,5 +11,5 @@
     <include layout="@layout/start_end_coordinates"/>
     <include layout="@layout/acceleration"/>
     <include layout="@layout/buttons"/>
-    
+
 </FrameLayout>
