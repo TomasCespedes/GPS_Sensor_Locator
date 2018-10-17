@@ -135,7 +135,7 @@ public class MainActivity
                 stop.setBackgroundColor(Color.GRAY);
                 drop_pin.setEnabled(false);
                 drop_pin.setBackgroundColor(Color.GRAY);
-                
+
                 // Save the end time
                 endTime = System.currentTimeMillis();
                 total_distance.setText(df.format(totalDistance) + " meters");
@@ -468,7 +468,10 @@ public class MainActivity
         row.addView(d);
 
         // Velocity
-        e.setText(df.format(prevLocation.bearingTo(currloco)));
+        long currentTime = System.currentTimeMillis();
+        double timeDiff = (currentTime - totalTime - startTime) / 1000.0;
+        double velocity = distance_temp / timeDiff;
+        e.setText(df.format(velocity));
         e.setTextSize(20);
         e.setTextColor(Color.WHITE);
         e.setGravity(Gravity.CENTER);
