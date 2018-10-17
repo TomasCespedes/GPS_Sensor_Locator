@@ -300,60 +300,28 @@ public class MainActivity
     // Add new pin to the table
     public void addNewPin() {
 
+        // Find table
         stk = (TableLayout) findViewById(R.id.table_main);
 
         // Get current location
         Location currentLocation = getLastKnownLocation();
-        double latitude = currentLocation.getLatitude();
-        double longitude = currentLocation.getLongitude();
+
+        TableRow tbrow = new TableRow(this);
 
         // Pin Number
-        TableRow tbrow = new TableRow(this);
         TextView t1v = new TextView(this);
-        t1v.setText(("" + pincount));
-        t1v.setTextColor(Color.WHITE);
-        t1v.setGravity(Gravity.CENTER);
-        tbrow.addView(t1v);
-
         // Latitude
         TextView t2v = new TextView(this);
-        t2v.setText(df.format(latitude));
-        t2v.setTextColor(Color.WHITE);
-        t2v.setGravity(Gravity.CENTER);
-        tbrow.addView(t2v);
-
         // Longitude
         TextView t3v = new TextView(this);
-        t3v.setText(df.format(longitude));
-        t3v.setTextColor(Color.WHITE);
-        t3v.setGravity(Gravity.CENTER);
-        tbrow.addView(t3v);
-
         // Distance
         TextView t4v = new TextView(this);
-        t4v.setText(df.format(1000* Utility.greatCircleDistance(
-                prevLocation.getLatitude(),
-                prevLocation.getLongitude(),
-                currentLocation.getLatitude(),
-                currentLocation.getLongitude())));
-
-        t4v.setTextColor(Color.WHITE);
-        t4v.setGravity(Gravity.CENTER);
-        tbrow.addView(t4v);
-
         // Velocity
         TextView t5v = new TextView(this);
-        t5v.setText(df.format(prevLocation.bearingTo(currentLocation)));
-        t5v.setTextColor(Color.WHITE);
-        t5v.setGravity(Gravity.CENTER);
-        tbrow.addView(t5v);
-
         // Compass Direction
         TextView t6v = new TextView(this);
-        t6v.setText(Utility.compassHeading(prevLocation, currentLocation));
-        t6v.setTextColor(Color.WHITE);
-        t6v.setGravity(Gravity.CENTER);
-        tbrow.addView(t6v);
+
+        setTableRows(t1v, t2v, t3v, t4v, t5v, t6v, tbrow, currentLocation);
 
         // add row view to the stack
         stk.addView(tbrow);
@@ -440,6 +408,58 @@ public class MainActivity
             String forTextView = df.format(speed) + " m/s";
             current_velocity.setText(forTextView);
         }
+    }
+
+    public void setTableRows(TextView a, TextView b, TextView c,
+                             TextView d, TextView e, TextView f,
+                             TableRow row, Location currloco) {
+
+        // Pin Number
+        a.setText(("" + pincount));
+        a.setTextSize(20);
+        a.setTextColor(Color.WHITE);
+        a.setGravity(Gravity.CENTER);
+        row.addView(a);
+
+        // Latitude
+        b.setText(df.format(currloco.getLatitude()));
+        b.setTextSize(20);
+        b.setTextColor(Color.WHITE);
+        b.setGravity(Gravity.CENTER);
+        row.addView(b);
+
+        // Longitude
+        c.setText(df.format(currloco.getLongitude()));
+        c.setTextSize(20);
+        c.setTextColor(Color.WHITE);
+        c.setGravity(Gravity.CENTER);
+        row.addView(c);
+
+        // Distance
+        d.setText(df.format(1000* Utility.greatCircleDistance(
+                prevLocation.getLatitude(),
+                prevLocation.getLongitude(),
+                currloco.getLatitude(),
+                currloco.getLongitude())));
+        d.setTextSize(20);
+        d.setTextColor(Color.WHITE);
+        d.setGravity(Gravity.CENTER);
+        row.addView(d);
+
+        // Velocity
+        e.setText(df.format(prevLocation.bearingTo(currloco)));
+        e.setTextSize(20);
+        e.setTextColor(Color.WHITE);
+        e.setGravity(Gravity.CENTER);
+        row.addView(e);
+
+        // Compass Direction
+        f.setText(Utility.compassHeading(prevLocation, currloco));
+        f.setTextSize(20);
+        f.setTextColor(Color.WHITE);
+        f.setGravity(Gravity.CENTER);
+        row.addView(f);
+
     }
 
 }
