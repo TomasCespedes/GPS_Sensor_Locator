@@ -55,6 +55,12 @@ public class MainActivity
     private int pincount = 0;
     private double totalDistance = 0;
 
+    // Times for total velocity
+    private long startTime;
+    private long totalTime;
+    private long endTime;
+
+
     //Sounds
     MediaPlayer mpPin;
     MediaPlayer mpStop;
@@ -92,6 +98,10 @@ public class MainActivity
                 starting_coordinates.setText(("(" + df.format(start_lat) + ", " +
                                             df.format(start_long) + ")"));
 
+                // Save the time the timer was set
+                startTime = System.currentTimeMillis();
+                totalTime = 0;
+
                 // Disable Buttons and change
                 // colors accordingly
                 start.setEnabled(false);
@@ -127,6 +137,8 @@ public class MainActivity
                 drop_pin.setEnabled(false);
                 drop_pin.setBackgroundColor(Color.GRAY);
 
+                // Save the end time
+                endTime = System.currentTimeMillis();
                 total_distance.setText(df.format(totalDistance) + " meters");
 
                 // Sound for stop button
@@ -458,7 +470,10 @@ public class MainActivity
         row.addView(d);
 
         // Velocity
-        e.setText(df.format(prevLocation.bearingTo(currloco)));
+        long currentTime = System.currentTimeMillis();
+        double timeDiff = (currentTime - totalTime - startTime) / 1000.0;
+        double velocity = distance_temp / timeDiff;
+        e.setText(df.format(velocity));
         e.setTextSize(20);
         e.setTextColor(Color.WHITE);
         e.setGravity(Gravity.CENTER);
