@@ -34,6 +34,7 @@ public class MainActivity
     private TextView ending_coordinates = null;
     private TextView current_coordinates = null;
     private TextView current_velocity = null;
+    private TextView total_distance = null;
 
     // Buttons
     private Button start, stop, drop_pin, reset;
@@ -51,6 +52,7 @@ public class MainActivity
 
     // Counter for pin clicks
     private int pincount = 0;
+    private double totalDistance = 0;
 
     //Sounds
     MediaPlayer mpPin;
@@ -124,6 +126,8 @@ public class MainActivity
                 drop_pin.setEnabled(false);
                 drop_pin.setBackgroundColor(Color.GRAY);
 
+                total_distance.setText(df.format(totalDistance) + " meters");
+
                 // Sound for stop button
                 mpStop.start();
             }
@@ -155,11 +159,12 @@ public class MainActivity
                 stk.removeAllViews();
                 addTableHeaders();
                 pincount = 0;
-
-
+                totalDistance = 0;
+                
                 // Reset text of starting/ending coordinates
                 starting_coordinates.setText("(0, 0)");
                 ending_coordinates.setText("(0, 0)");
+                total_distance.setText("0 meters");
 
                 // Reset all the buttons
                 drop_pin.setEnabled(false);
@@ -256,6 +261,7 @@ public class MainActivity
         ending_coordinates = (TextView) findViewById(R.id.ending_coordinates);
         current_coordinates = (TextView) findViewById(R.id.current_coordinates);
         current_velocity = (TextView) findViewById(R.id.current_velocity);
+        total_distance = (TextView) findViewById(R.id.total_distance);
 
         // Find buttons
         start = (Button) findViewById(R.id.start_button);
@@ -436,11 +442,14 @@ public class MainActivity
         row.addView(c);
 
         // Distance
-        d.setText(df.format(1000* Utility.greatCircleDistance(
+        double distance_temp = (1000* Utility.greatCircleDistance(
                 prevLocation.getLatitude(),
                 prevLocation.getLongitude(),
                 currloco.getLatitude(),
-                currloco.getLongitude())));
+                currloco.getLongitude()));
+        d.setText(df.format(distance_temp));
+        // update total distance
+        totalDistance = totalDistance + distance_temp;
         d.setTextSize(20);
         d.setTextColor(Color.WHITE);
         d.setGravity(Gravity.CENTER);
