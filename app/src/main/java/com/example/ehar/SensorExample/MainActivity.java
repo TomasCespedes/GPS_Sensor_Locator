@@ -121,6 +121,9 @@ public class MainActivity
             @Override
             public void onClick(View view) {
 
+                // Save the end time
+                endTime = System.currentTimeMillis();
+
                 // Get location when user hits stop
                 endLocation = getLastKnownLocation();
                 double end_lat = endLocation.getLatitude();
@@ -130,6 +133,11 @@ public class MainActivity
                 ending_coordinates.setText(("(" + df.format(end_lat) + ", " +
                                         df.format(end_long) + ")"));
 
+                // Set the overall velocity
+                double totalTime = (endTime - startTime) / 1000.0;
+                double avgVel = totalDistance / totalTime;
+                total_velocity.setText(df.format(avgVel));
+
                 // Change button enabled and
                 // colors accordingly
                 stop.setEnabled(false);
@@ -137,8 +145,6 @@ public class MainActivity
                 drop_pin.setEnabled(false);
                 drop_pin.setBackgroundColor(Color.GRAY);
 
-                // Save the end time
-                endTime = System.currentTimeMillis();
                 total_distance.setText(df.format(totalDistance) + " meters");
 
                 // Sound for stop button
