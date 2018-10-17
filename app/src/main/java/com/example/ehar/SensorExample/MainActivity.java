@@ -350,7 +350,6 @@ public class MainActivity
         // Save Previous location
         prevLocation = currentLocation;
 
-        Log.d("String", Integer.toString(pincount));
 
     }
 
@@ -397,5 +396,33 @@ public class MainActivity
         stk.addView(tbrow0);
     }
 
+    public void instantaneousVelocity() {
+        Velocity v = new Velocity(getLastKnownLocation(), 2);
+        Utility.delayedRunOnUiThread(this, 2000, v);
     }
+
+    private class Velocity implements Runnable {
+        private Location start;
+        private  int time;
+        public Velocity(Location start, int time) {
+            this.start = start;
+            this.time = time;
+        }
+
+        @Override
+        public void run() {
+            Location curr = getLastKnownLocation();
+            double distanceTravelled = Utility.greatCircleDistance(
+                    start.getLatitude(),
+                    start.getLongitude(),
+                    curr.getLatitude(),
+                    curr.getLongitude());
+            // Divide the distance travelled by
+            // the time period it runs over
+            double speed = distanceTravelled / this.time;
+            String forTextView = df.format(speed) + " m/s";
+        }
+    }
+
+}
 

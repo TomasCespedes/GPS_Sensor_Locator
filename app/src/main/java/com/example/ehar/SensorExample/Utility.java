@@ -1,6 +1,9 @@
 package com.example.ehar.SensorExample;
 
 import android.location.Location;
+import android.os.Handler;
+
+import java.util.logging.LogRecord;
 
 public class Utility {
     // calculates distance on a sphere
@@ -29,5 +32,19 @@ public class Utility {
         double currLat = Math.toRadians(curr.getLatitude());
         double currLon = Math.toRadians(curr.getLongitude());
         return 0.0;
+    }
+
+    public static void delayedRunOnUiThread(
+            final MainActivity mainActivity,
+            int delay,
+            final Runnable runnable
+    ) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mainActivity.runOnUiThread(runnable);
+            }
+        }, delay);
     }
 }
