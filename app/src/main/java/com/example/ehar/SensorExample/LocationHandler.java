@@ -13,7 +13,7 @@ import android.app.Activity;
 import android.support.v4.app.ActivityCompat;
 
 /**
- * Created by ehar on 9/5/16.
+ * LocationHandler that is used to get the coordinates of the user.
  */
 public class LocationHandler extends Observable
                              implements LocationListener {
@@ -25,6 +25,10 @@ public class LocationHandler extends Observable
     public LocationHandler(Activity act) {
         this.act = act;
 
+        /**
+         * Check if User has permissions to use the current location.
+         * If not, ask user for permission.
+         */
         if (this.act.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -36,6 +40,9 @@ public class LocationHandler extends Observable
         initializeLocationManager();
     }
 
+    /**
+     * Initialize the location manager
+     */
     public void initializeLocationManager() {
         lm = (LocationManager)this.act.getApplicationContext().getSystemService(act.LOCATION_SERVICE);
 
@@ -48,7 +55,6 @@ public class LocationHandler extends Observable
             lm.requestLocationUpdates(
                     LocationManager.NETWORK_PROVIDER, 5000, 0, this);
 
-            // I don't think you are supposed to manually call onLocationChanged
             setChanged();
             notifyObservers(getLastKnownLocation());
         }
@@ -72,10 +78,11 @@ public class LocationHandler extends Observable
     public void onProviderDisabled(String s) {
 
     }
+
     /**
      * Borrowed from StackOverflow
      * http://stackoverflow.com/questions/20438627/getlastknownlocation-returns-null
-     * @return
+     * @return last known location
      */
     private Location getLastKnownLocation() {
 

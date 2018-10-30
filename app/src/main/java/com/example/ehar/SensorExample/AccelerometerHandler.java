@@ -10,7 +10,9 @@ import android.hardware.SensorManager;
 import java.util.Observable;
 
 /**
- * Created by ehar on 8/12/2016.
+ * Acceleromter Handler that uses the system's current time
+ * and subtracts the previous time from it in order to constantly
+ * be checking the acceleration.
  */
 public class AccelerometerHandler
         extends Observable
