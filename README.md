@@ -6,11 +6,11 @@ This is a group project for Android Development class written by Chris Roy, Tayl
 # Home Screen when app opens.
 ![image](https://user-images.githubusercontent.com/35609863/47691989-9edd9a80-dbca-11e8-9b8d-04949ebc713c.png)
 
-# User hits Start Button
+# User hits Start Button and drops some pins.
 ![image](https://user-images.githubusercontent.com/35609863/47692001-a43ae500-dbca-11e8-9f99-aafa1ce75784.png)
 
-# User drops pins 
+# User drops pins beyond window limit and uses the ScrollView to go down.
 ![image](https://user-images.githubusercontent.com/35609863/47692006-a8670280-dbca-11e8-8b1d-d94e8fd175bb.png)
 
-# User hits stop button
+# User hits stop button.
 ![image](https://user-images.githubusercontent.com/35609863/47692011-ac932000-dbca-11e8-812f-f5cb52920849.png)
